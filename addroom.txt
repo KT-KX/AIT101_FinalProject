@@ -1,0 +1,4 @@
+Name                    Phone Number        Check-In Date       Check-Out Date      Room Booked
+
+Ng Hong Ming			01234567890			16/12/2022			21/12/2022			1
+Eng Kuan Tian			01234567890			17/12/2022			25/12/2022			1
