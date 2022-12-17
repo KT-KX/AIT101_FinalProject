@@ -18,7 +18,6 @@ void add(){
     int day=0;
     char checkindate[11];
     char checkoutdate[11];
-    char empty[10];
 
     FILE *fptr;
 	fptr=fopen("C:\\Users\\Koh Ming Kai\\Downloads\\HOTEL_MANAGEMENT_SYSTEM_IN_C_PROGRAMMING_WITH_SOURCE_CODE\\HotelMgmt C Updated\\Hotel Management System C UPDT\\addroom.txt","a+");
