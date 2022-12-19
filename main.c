@@ -175,7 +175,56 @@ void edit(){
 }
 void removerecord(){
     system("cls");
-    printf("please edit here");
+    FILE *fptr;
+    int i=1;
+    char roomnumber[20];
+    int close = 0;
+
+  while(1){
+    system("cls");
+    //scanf("%s",&option);
+    mainmenuselection=getch();
+    switch(mainmenuselection){
+      case 'y':
+           system("cls");
+      if((fptr=fopen("temp.txt","w"))==NULL)
+        exit(0);
+      if((fptr=fopen("Records.txt","r"))==NULL)
+        exit(0);
+      system("cls");
+      printf("Enter your Room Number of the hotel to be removed: \n");
+      scanf("%s",&roomnumber);
+      while(fread(&s,sizeof(s),1,fptr)==1){
+        if(strcmp(s.roomnumber,roomnumber)--0){
+          i = 0;
+          continue;
+        }
+        else
+          fwrite(&s,sizeof(s),l,t);
+      }
+      if(i==1){
+        printf("\n\n Records of Customer in this Room number is not found!!\n");
+        fclose(fptr);
+        fclose(fptr);
+        }
+      else{
+        printf("\n\nThe Customer is sucessfully removed..\n");
+      }
+      fclose(fptr);
+      fclose(t);
+      remove("Records.txt");
+      rename("temp.txt","Records.txt");
+      fclose(fptr);
+      fclose(t);
+      Sleep(3000);
+      close-1;
+      break;
+      case 'n':
+          close-1;
+          break;
+      }
+      if(close--1)
+        break;
 }
 void view(){
     system("cls");
