@@ -72,7 +72,7 @@ int main(void){
     printf("--------------------------------------------------------\n\n");
     printf("Press any key to login! ");
     getch();
-    //login();
+    login();
     while (validation==2){
         exit(1);
     }
@@ -159,22 +159,17 @@ void removerecord(){
 	
 void view(){
     FILE *fptr;
-    char *fn = "addroom.txt";
-    fptr = fopen(fn,"r+");
+	int i;
+	fptr=fopen("addroom.txt","r");
 
-    if(fptr == NULL)
-    {
-        printf("Error: could not open file %s", fn);
-    }
-
-    const unsigned max_length = 256;
-    char buffer[max_length];
-
-    while (fgets(buffer, max_length, fptr))
-        printf("\n%s", buffer);
-
-    fclose(fptr);
-    getch();
+    printf("Name\t\tPhone Number\t\tCheck In Date\t\tCheck Out Date\tRoom Number");
+	while(fread(&customer,sizeof(customer),1,fptr)==1)
+	{
+		printf("\n%s \t%s \t\t%s \t\t%s \t%s",customer.name, customer.phonenumber, customer.checkindate, customer.checkoutdate, customer.roomnumber);
+	}
+	printf("\n");
+	fclose(fptr);
+	getch();
 }
 
 void roomlist(){
