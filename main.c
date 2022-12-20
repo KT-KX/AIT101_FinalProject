@@ -9,7 +9,7 @@ int validation=0;
 int wrongattempt=0;
 int infiniteloop=1;
 int mainmenuselection;
-
+int roommenu;
 struct CustomerDetails{
     char name[20];
     char phonenumber[15];
@@ -22,7 +22,7 @@ void add();
 void edit();
 void removerecord();
 void view();
-void search();
+void roomlist();
 
 void login(){
     char username[15] = "aitgroup10";
@@ -72,7 +72,7 @@ int main(void){
     printf("--------------------------------------------------------\n\n");
     printf("Press any key to login! ");
     getch();
-    login();
+    //login();
     while (validation==2){
         exit(1);
     }
@@ -87,7 +87,7 @@ int main(void){
         printf("\n|  2) Edit Customer Record              |");
         printf("\n|  3) Remove/Delete Customer Record     |");
         printf("\n|  4) View Customer Record              |");
-        printf("\n|  5) Search Customer Record            |");;
+        printf("\n|  5) Room List                         |");;
         printf("\n|  6) Exit                              |");
         printf("\n ---------------------------------------");
         printf("\n Your Selection: ");
@@ -101,7 +101,7 @@ int main(void){
         }else if (mainmenuselection==4){
             view();
         }else if (mainmenuselection==5){
-            search();
+            roomlist();
         }else if (mainmenuselection==6){
             system("cls");
             printf("THANK YOU. SEE YOU NEXT TIME");
@@ -171,14 +171,76 @@ void view(){
     char buffer[max_length];
 
     while (fgets(buffer, max_length, fptr))
-        printf("%s", buffer);
+        printf("\n%s", buffer);
 
     fclose(fptr);
+    getch();
 }
 
-void search(){
+void roomlist(){
+    int valid=1;
     system("cls");
-    printf("please edit here");
+    printf("\n                 ROOM LIST                 ");
+    printf("\n===========================================");
+    printf("\nType Of Room\tRoom Number\tPrice");
+    for (int i = 1; i <10 ; i++)
+    {
+        printf("\nSingle\t\tA0%d\t\tRM150/night",i);
+    }
+    printf("\n-------------------------------------------");
+    for (int i = 1; i <10 ; i++)
+    {
+        printf("\nDouble\t\tB0%d\t\tRM250/night",i);
+    }
+    printf("\n-------------------------------------------");
+    for (int i = 1; i <6 ; i++)
+    {
+        printf("\nQueen\t\tQ0%d\t\tRM300/night",i);
+    }
+    printf("\n-------------------------------------------");
+    for (int i = 1; i <6 ; i++)
+    {
+        printf("\nKing\t\tK0%d\t\tRM450/night",i);
+    }
+    printf("\n-------------------------------------------");
+    for (int i = 1; i <4 ; i++)
+    {
+        printf("\nPremium\t\tP0%d\t\tRM550/night",i);
+    }
+    printf("\n-------------------------------------------");
+    for (int i = 1; i <3 ; i++)
+    {
+        printf("\nDeluxe\t\tD0%d\t\tRM650/night",i);
+    }
+    printf("\n-------------------------------------------");
+    for (int i = 1; i <3 ; i++)
+    {
+        printf("\nSupreme\t\tS0%d\t\tRM750/night",i);
+    }
+    printf("\n===========================================");
+    printf("\n\n");
+
+    while (valid==1)
+    {
+        printf("\n ---------------------------------------");
+        printf("\n|     XMUM Hotel Reservation System     |");
+        printf("\n|                                       |");
+        printf("\n|  Room Menu                            |");
+        printf("\n|  1) Room Booking/Reservation          |");
+        printf("\n|  2) Exit                              |");
+        printf("\n ---------------------------------------");
+        printf("\n Your Selection: ");
+        scanf("%d",&roommenu);
+        if (roommenu==1)
+        {
+            add();
+        }
+        else{
+            break;}
+    }
+    printf("\nEnter any key to continue.");
+    getch();
+
 }
 
 
