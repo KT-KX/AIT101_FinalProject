@@ -158,9 +158,24 @@ void removerecord(){
   
 	
 void view(){
-    system("cls");
-    printf("please edit here");
+    FILE *fptr;
+    char *fn = "addroom.txt";
+    fptr = fopen(fn,"r+");
+
+    if(fptr == NULL)
+    {
+        printf("Error: could not open file %s", fn);
+    }
+
+    const unsigned max_length = 256;
+    char buffer[max_length];
+
+    while (fgets(buffer, max_length, fptr))
+        printf("%s", buffer);
+
+    fclose(fptr);
 }
+
 void search(){
     system("cls");
     printf("please edit here");
