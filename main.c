@@ -13,11 +13,11 @@ int mainmenuselection;
 int roommenu;
 
 struct CustomerDetails{
+    char roomnumber[10];
     char name[20];
     char phonenumber[15];
     char checkindate[15];
     char checkoutdate[15];
-    char roomnumber[10];
 }customer;
 
 void add();
@@ -129,7 +129,7 @@ void edit(){
     while (fread(&customer,sizeof(customer),1,fptr)==1){
         if(strcmp(customer.roomnumber,roomnumber)==0){
             j=0;
-            printf("Please enter your Room number: ");
+            printf("Please enter your new Room number: ");
             gets(customer.roomnumber);
             printf("Please enter your name : ");
             fflush(stdin);
@@ -205,10 +205,10 @@ void view(){
 	int i;
 	fptr=fopen("addroom.txt","r");
 
-    printf("Name\t\tPhone Number\t\tCheck In Date\t\tCheck Out Date\tRoom Number");
+    printf("Room Number\tName\t\tPhone Number\tCheck In Date\tCheck Out Date");
 	while(fread(&customer,sizeof(customer),1,fptr)==1)
 	{
-		printf("\n%s \t%s \t\t%s \t\t%s \t%s",customer.name, customer.phonenumber, customer.checkindate, customer.checkoutdate, customer.roomnumber);
+		printf("\n%s \t\t%s \t%s \t%s \t%s",customer.roomnumber, customer.name, customer.phonenumber, customer.checkindate, customer.checkoutdate );
 	}
 	printf("\n");
     printf("\nPress any key to continue.");
